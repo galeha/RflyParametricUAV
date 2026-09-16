@@ -96,7 +96,10 @@ LADAC 模型内容。
 
 菜单会自动显示配置的 `profile_id`、构型、PX4 airframe 和执行器数量。
 如果已有仿真运行，菜单会列出相关进程，并在得到确认后清理旧仿真再启动
-所选机型。
+所选机型。所选机型到达 `Ready for takeoff!` 后，窗口会等待按键；按下任意
+按键会关闭本次仿真的 PX4、CopterSim、RflySim3D 和 QGroundControl，然后
+结束 `select-sim.cmd`。如果从已有 PowerShell 终端运行，只会返回该终端，
+不会关闭终端本身。
 
 一键关闭本项目的 PX4、CopterSim、RflySim3D 和 QGroundControl：
 

@@ -9,7 +9,8 @@ param(
     [string]$RunId,
     [int]$ReadyTimeoutSeconds = 120,
     [switch]$AllowClassIdConflict,
-    [switch]$Force
+    [switch]$Force,
+    [switch]$WaitForKeyCleanup
 )
 
 $ErrorActionPreference = 'Stop'
@@ -714,7 +715,10 @@ function Invoke-RunProfile {
 }
 
 function Invoke-ProfileSelector {
-    param([Parameter(Mandatory = $true)][psobject]$LocalSettings)
+    param(
+        [Parameter(Mandatory = $true)][psobject]$LocalSettings,
+        [switch]$CleanupOnKeyPress
+    )
 
     $catalog = @(Get-RflyProfileCatalog -ConfigDirectory (Join-Path $script:ProjectRoot 'configs'))
     if ($catalog.Count -eq 0) {
@@ -760,6 +764,17 @@ function Invoke-ProfileSelector {
 
     Write-Host ("Starting profile '{0}' from {1}" -f $selected.ProfileId, $selected.Path)
     Invoke-RunProfile -LocalSettings $LocalSettings -SelectedProfilePath $selected.Path
+    if ($CleanupOnKeyPress) {
+        Write-Host ''
+        Write-Host 'Simulation is running. Press any key to close PX4, CopterSim, RflySim3D, and QGroundControl.'
+        try {
+            [void][Console]::ReadKey($true)
+        } catch {
+            [void](Read-Host 'Press Enter to close the simulation')
+        }
+        Invoke-SimulationCleanup -LocalSettings $LocalSettings -SkipConfirmation
+        Write-Host 'Simulation closed. You may now close this terminal.'
+    }
 }
 
 function Stop-RecordedRun {
@@ -842,6 +857,6 @@ switch ($Command) {
         Invoke-SimulationCleanup -LocalSettings $localSettings -SkipConfirmation:$Force
     }
     'select' {
-        Invoke-ProfileSelector -LocalSettings $localSettings
+        Invoke-ProfileSelector -LocalSettings $localSettings -CleanupOnKeyPress:$WaitForKeyCleanup
     }
 }
