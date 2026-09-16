@@ -1,0 +1,19 @@
+{
+  "matlab_exe": "C:\\Path\\To\\MATLAB\\R2025b\\bin\\matlab.exe",
+  "rfly_root": "D:\\Path\\To\\PX4PSP",
+  "wsl_exe": "C:\\Windows\\System32\\wsl.exe",
+  "wsl_distro": "RflySim-20.04",
+  "px4_sources": {
+    "vendor_px4": {
+      "windows_path": "D:\\Path\\To\\PX4PSP\\Firmware",
+      "wsl_path": "/mnt/d/Path/To/PX4PSP/Firmware",
+      "launch_style": "vendor"
+    },
+    "custom_px4": {
+      "windows_path": "D:\\Path\\To\\px4-custom",
+      "wsl_path": "/mnt/d/Path/To/px4-custom",
+      "launch_style": "helper",
+      "helper_wsl": "/mnt/d/Path/To/RflyParametricUAV/scripts/sitl_multiple_run_rfly_custom.sh"
+    }
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "profile_id": "quad_x",
+  "variant": "quad_x",
+  "airframe": {
+    "mass_kg": 1.515,
+    "inertia_kg_m2": [[0.0211, 0, 0], [0, 0.0219, 0], [0, 0, 0.0366]],
+    "cog_b_m": [0, 0, 0]
+  },
+  "actuators": [
+    {"channel": 1, "position_b_m": [0.1591, 0.1591, 0], "thrust_axis_b": [0, 0, -1], "reaction_torque_sign": -1, "max_speed_rad_s": 864.93, "thrust_coeff_N_s2": 1.681e-5, "torque_coeff_Nm_s2": 2.783e-7, "time_constant_s": 0.0214, "command_min": 0.05, "command_max": 1.0, "validation_status": "template_default"},
+    {"channel": 2, "position_b_m": [-0.1591, -0.1591, 0], "thrust_axis_b": [0, 0, -1], "reaction_torque_sign": -1, "max_speed_rad_s": 864.93, "thrust_coeff_N_s2": 1.681e-5, "torque_coeff_Nm_s2": 2.783e-7, "time_constant_s": 0.0214, "command_min": 0.05, "command_max": 1.0, "validation_status": "template_default"},
+    {"channel": 3, "position_b_m": [0.1591, -0.1591, 0], "thrust_axis_b": [0, 0, -1], "reaction_torque_sign": 1, "max_speed_rad_s": 864.93, "thrust_coeff_N_s2": 1.681e-5, "torque_coeff_Nm_s2": 2.783e-7, "time_constant_s": 0.0214, "command_min": 0.05, "command_max": 1.0, "validation_status": "template_default"},
+    {"channel": 4, "position_b_m": [-0.1591, 0.1591, 0], "thrust_axis_b": [0, 0, -1], "reaction_torque_sign": 1, "max_speed_rad_s": 864.93, "thrust_coeff_N_s2": 1.681e-5, "torque_coeff_Nm_s2": 2.783e-7, "time_constant_s": 0.0214, "command_min": 0.05, "command_max": 1.0, "validation_status": "template_default"}
+  ],
+  "aero": {"drag_coefficient": 0.055, "angular_damping": [0.0035, 0.0039, 0.0034], "characteristic_length_m": 0.12},
+  "environment": {"gps_lat_lon_deg": [40.1540302, 116.2593683], "origin_altitude_ned_m": -50},
+  "initial": {"position_ned_m": [0, 0, 0], "euler_rad": [0, 0, 0], "velocity_body_m_s": [0, 0, 0], "rate_body_rad_s": [0, 0, 0]},
+  "visual": {
+    "class_id": 3,
+    "install_mode": "builtin",
+    "name": "Parametric_Quad_X",
+    "body_mesh_path": "/Rfly3DSimPlugin/copter/F450Body",
+    "body_scale": [1, 1, 1],
+    "center_height_cm": 16.3,
+    "actuators": [
+      {"mesh_path": "/Rfly3DSimPlugin/copter/PropellersCCW", "position_cm": [15.798, 16.167, 4.5], "euler_deg": [0, 0, 0], "rotation_axis": [0, 0, 1]},
+      {"mesh_path": "/Rfly3DSimPlugin/copter/PropellersCCW", "position_cm": [-15.634, -16.299, 4.5], "euler_deg": [0, 0, 0], "rotation_axis": [0, 0, 1]},
+      {"mesh_path": "/Rfly3DSimPlugin/copter/PropellersCW", "position_cm": [16.299, -15.634, 4.5], "euler_deg": [0, 0, 0], "rotation_axis": [0, 0, 1]},
+      {"mesh_path": "/Rfly3DSimPlugin/copter/PropellersCW", "position_cm": [-16.299, 15.634, 4.5], "euler_deg": [0, 0, 0], "rotation_axis": [0, 0, 1]}
+    ]
+  },
+  "px4": {"source_key": "custom_px4", "sitl_frame": "iris", "expected_output_channels": [1, 2, 3, 4]},
+  "simulation": {"map": "Grasslands", "udp_mode": "Mavlink_Full", "vehicle_id": 1}
+}
