@@ -125,3 +125,13 @@ PowerShell 进程工具测试：
 ```powershell
 Invoke-Pester .\tests\RflyUav.ProcessTools.Tests.ps1
 ```
+
+## 来源与授权
+
+本项目基于 RflySim 提供的 `Exp2_MaxModelTemp` 最大模型模板开发，
+并使用其 `GenerateModelDLLFile.p` DLL 生成接口。具体的上游文件、
+项目修改范围和归属说明见 [`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md)。
+
+本仓库当前公开仅为了查看、学习和协作，尚未选定开源许可证。
+除第三方内容受其各自条款约束外，未经明确授权，不额外授予复制、
+修改、分发或商业使用本项目自有内容的许可。
